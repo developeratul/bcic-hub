@@ -1,6 +1,6 @@
+import { getUserAndProfile } from "@/actions/auth.actions";
 import TopBar from "@/components/topbar";
 import AuthProvider from "@/providers/auth";
-import { createClient } from "@/utils/supabase/server";
 import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
 import "./globals.css";
@@ -25,19 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  let profile = null;
-
-  if (user) {
-    const { data } = await supabase.from("profile").select("*").eq("id", user.id).single();
-
-    profile = data;
-  }
-
+  const { profile, user } = await getUserAndProfile();
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">

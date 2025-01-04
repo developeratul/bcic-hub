@@ -13,7 +13,7 @@ export default async function Login(props: { searchParams: Promise<Message> }) {
       <p className="text-sm text-foreground">
         Don't have an account?{" "}
         <Link className="text-foreground font-medium underline" href="/sign-up">
-          Sign up
+          Create Account
         </Link>
       </p>
       <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">

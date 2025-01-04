@@ -6,6 +6,7 @@ import { UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { buttonVariants } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,7 +45,14 @@ export default function TopBar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <div>No</div>
+            <div className="flex items-center gap-2">
+              <Link href="/sign-in" className={buttonVariants({ variant: "ghost" })}>
+                Sign In
+              </Link>
+              <Link href="/sign-up" className={buttonVariants({ variant: "secondary" })}>
+                Create Account
+              </Link>
+            </div>
           )}
         </div>
       </div>
