@@ -1,4 +1,5 @@
 import { getUserAndProfile } from "@/actions/auth.actions";
+import OnboardingProvider from "@/providers/onboarding";
 import { AppProps } from "@/types";
 import { redirect } from "next/navigation";
 
@@ -14,5 +15,5 @@ export default async function OnboardingLayout(props: AppProps) {
     return redirect(`/${profile.username}`);
   }
 
-  return children;
+  return <OnboardingProvider>{children}</OnboardingProvider>;
 }

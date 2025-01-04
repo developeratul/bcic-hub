@@ -5,6 +5,7 @@ import { useAuth } from "@/providers/auth";
 import { UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { buttonVariants } from "./ui/button";
 import {
@@ -17,14 +18,15 @@ import {
 } from "./ui/dropdown-menu";
 
 export default function TopBar() {
-  const { user } = useAuth();
+  const { user, profile } = useAuth();
+  const router = useRouter();
   return (
-    <nav className="py-4 border-b">
+    <nav className="py-4 border-b sticky top-0 bg-card left-0 z-50">
       <div className="container">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <Image className="shrink-0" src={LogoSrc} alt="BCIC Hub Logo" width={45} />
-            <p className="font-semibold text-lg">BCIC Hub</p>
+            <p className="font-semibold hidden sm:block text-lg">BCIC Hub</p>
           </Link>
           {user ? (
             <DropdownMenu>
@@ -39,7 +41,11 @@ export default function TopBar() {
               <DropdownMenuContent>
                 <DropdownMenuLabel>{user?.email}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>My Profile</DropdownMenuItem>
+                <DropdownMenuItem
+                  onClick={() => router.push(profile ? `/${profile.username}` : "/onboarding")}
+                >
+                  My Profile
+                </DropdownMenuItem>
                 <DropdownMenuItem>Account Settings</DropdownMenuItem>
                 <DropdownMenuItem onClick={() => signOutAction()}>Logout</DropdownMenuItem>
               </DropdownMenuContent>

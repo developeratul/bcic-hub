@@ -3,6 +3,7 @@ import TopBar from "@/components/topbar";
 import AuthProvider from "@/providers/auth";
 import { ThemeProvider } from "next-themes";
 import { Geist } from "next/font/google";
+import { Toaster } from "sonner";
 import "./globals.css";
 
 const defaultUrl = process.env.VERCEL_URL
@@ -35,9 +36,10 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster />
           <AuthProvider profile={profile} user={user}>
             <TopBar />
-            {children}
+            <div className="py-4">{children}</div>
           </AuthProvider>
         </ThemeProvider>
       </body>
