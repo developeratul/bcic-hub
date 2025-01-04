@@ -18,6 +18,7 @@ export type Database = {
           display_name: string
           email: string
           houseName: string
+          hscBatch: string
           id: string
           username: string
         }
@@ -29,6 +30,7 @@ export type Database = {
           display_name?: string
           email?: string
           houseName?: string
+          hscBatch?: string
           id?: string
           username?: string
         }
@@ -40,6 +42,7 @@ export type Database = {
           display_name?: string
           email?: string
           houseName?: string
+          hscBatch?: string
           id?: string
           username?: string
         }
