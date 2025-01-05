@@ -15,5 +15,9 @@ export default async function OnboardingLayout(props: AppProps) {
     return redirect(`/${profile.username}`);
   }
 
-  return <OnboardingProvider>{children}</OnboardingProvider>;
+  return (
+    <OnboardingProvider>
+      <div className="w-full max-w-lg mx-auto py-24">{children}</div>
+    </OnboardingProvider>
+  );
 }

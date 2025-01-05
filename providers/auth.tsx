@@ -18,8 +18,8 @@ export default function AuthProvider(
   }
 ) {
   const { children } = props;
-  const [user, setUser] = useState<InitialState["user"]>(null);
-  const [profile, setProfile] = useState<InitialState["profile"]>(null);
+  const [user, setUser] = useState<InitialState["user"]>(props.user);
+  const [profile, setProfile] = useState<InitialState["profile"]>(props.profile);
 
   useEffect(() => {
     setUser(props.user);

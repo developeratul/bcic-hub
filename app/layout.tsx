@@ -27,6 +27,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const { profile, user } = await getUserAndProfile();
+
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
@@ -39,7 +40,7 @@ export default async function RootLayout({
           <Toaster />
           <AuthProvider profile={profile} user={user}>
             <TopBar />
-            <div className="py-4">{children}</div>
+            {children}
           </AuthProvider>
         </ThemeProvider>
       </body>

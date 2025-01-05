@@ -15,17 +15,22 @@ import { Input } from "../ui/input";
 export default function OnboardingStep1() {
   const { form } = useOnboarding();
   const username = form.watch("username");
-  const [debounced] = useDebouncedState(username, 500);
+  const [debounced, setB] = useDebouncedState(username, 500);
 
   useEffect(() => {
-    const validateUsername = async () => {
-      const isUsernameExist = await checkUsernameExistence(debounced);
-      if (isUsernameExist) {
-        form.setError("username", { message: "Username already exists" });
-      } else {
-        form.clearErrors("username");
-      }
-    };
+    setB(username);
+  }, [username]);
+
+  const validateUsername = async () => {
+    const isUsernameExist = await checkUsernameExistence(debounced);
+    if (isUsernameExist) {
+      form.setError("username", { message: "Username already exists" });
+    } else {
+      form.clearErrors("username");
+    }
+  };
+
+  useEffect(() => {
     validateUsername();
   }, [debounced]);
 

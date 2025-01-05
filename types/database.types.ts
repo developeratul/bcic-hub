@@ -9,6 +9,41 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      clubs: {
+        Row: {
+          clubName: string
+          clubRole: string
+          created_at: string
+          description: string
+          id: number
+          userId: string
+        }
+        Insert: {
+          clubName?: string
+          clubRole?: string
+          created_at?: string
+          description: string
+          id?: number
+          userId: string
+        }
+        Update: {
+          clubName?: string
+          clubRole?: string
+          created_at?: string
+          description?: string
+          id?: number
+          userId?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clubs_userId_fkey"
+            columns: ["userId"]
+            isOneToOne: false
+            referencedRelation: "profile"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profile: {
         Row: {
           avatarPath: string | null
