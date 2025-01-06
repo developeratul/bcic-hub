@@ -38,7 +38,7 @@ export default function TopBar() {
   }
 
   return (
-    <nav className="py-4 border-b sticky top-0 bg-card left-0 z-50">
+    <nav className="py-4 border-b sticky top-0 bg-card left-0 z-50 h-[80px] flex items-center justify-center">
       <div className="container">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex block shrink-0 items-center gap-2">
